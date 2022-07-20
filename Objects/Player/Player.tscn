@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Objects/Player/Player.cs" type="Script" id=1]
+[ext_resource path="res://Objects/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Player/LIDARMesh.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Player/Lidar.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 margin = 0.1
@@ -10,12 +11,10 @@ height = 0.7
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
-LidarRayPath = NodePath("Head/LidarRay")
-CameraPath = NodePath("Head/Camera")
-LIDARContainerPath = NodePath("LIDARContainer")
-LIDARMeshScene = ExtResource( 2 )
 
 [node name="LIDARContainer" type="Spatial" parent="."]
+script = ExtResource( 3 )
+lidar_mesh_scene = ExtResource( 2 )
 
 [node name="Collision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.85, 0 )
